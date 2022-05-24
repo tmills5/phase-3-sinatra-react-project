@@ -117,3 +117,24 @@ fetch("http://localhost:9292/test")
 [dbdiagram.io]: https://dbdiagram.io/
 [postman download]: https://www.postman.com/downloads/
 [network tab]: https://developer.chrome.com/docs/devtools/network/
+
+----------------------------------------------------------------------------------------
+
+### Cocktail
+--
+name
+directions
+
+has many ingredients
+
+### CocktailIngredient
+--
+amount:
+belong to a cocktail
+belong to an ingredient
+
+### Ingredient
+--
+name
+
+has many meal
