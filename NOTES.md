@@ -123,9 +123,11 @@ fetch("http://localhost:9292/test")
 ### Cocktail
 --
 name
-directions
+instructions
+image
 
-has many ingredients
+has many cocktail ingredients
+has many ingredients through cocktail ingredients
 
 ### CocktailIngredient
 --
@@ -137,4 +139,5 @@ belong to an ingredient
 --
 name
 
-has many meal
+has many cocktail ingredients
+has many cocktails throught cocktail ingredients
