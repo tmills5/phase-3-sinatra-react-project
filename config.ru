@@ -12,4 +12,8 @@ end
 use Rack::JSONBodyParser
 
 # Our application
-run ApplicationController
+
+use CocktailsController
+use IngredientsController
+run ApplicationController #we want this one to be run first
+
