@@ -1,12 +1,12 @@
 require 'faker'
 
-puts "🌱 Seeding spices..."
+puts "🌱 Seeding drinks..."
 
 # Seed your database here
 
-ice = Ingredient.find(10)
-vodka = Ingredient.find(11)
-oj = Ingredient.find(12)
+ice = Ingredient.create(name: "ice")
+vodka = Ingredient.create(name: "vodka")
+oj = Ingredient.create(name: "oj")
 
 test_1_screwdriver = Cocktail.create(name: "ScrewDriver", instructions: "Mix", image: "Test URL")
 
