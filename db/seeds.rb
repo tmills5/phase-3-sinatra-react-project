@@ -7,6 +7,7 @@ puts "🌱 Seeding drinks..."
 ice = Ingredient.create(name: "ice")
 vodka = Ingredient.create(name: "vodka")
 oj = Ingredient.create(name: "oj")
+bourbon = Ingredient.create(name: "bourbon")
 
 test_1_screwdriver = Cocktail.create(name: "ScrewDriver", instructions: "Mix", image: "Test URL")
 

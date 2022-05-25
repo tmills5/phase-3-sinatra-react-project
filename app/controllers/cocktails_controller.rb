@@ -9,7 +9,7 @@ class CocktailsController < ApplicationController
     end
 
     post "/cocktails" do
-        binding.pry
+        #binding.pry
         cocktail = cocktail.new(params[:cocktail])
         if cocktail.save
             #adding the ingredients to the cocktail
