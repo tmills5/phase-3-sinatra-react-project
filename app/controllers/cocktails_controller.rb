@@ -25,7 +25,7 @@ class CocktailsController < ApplicationController
     patch "/cocktails/:id" do
         cocktail = Cocktail.find_by_id(params[:id])
         if cocktail && cocktail.update(params[:cocktail])
-            #if cocktail params updates, then move on to cocktai_ingredient
+            #if cocktail params updates, then move on to cocktail_ingredient
             params[:cocktail_ingredients].each do |cocktail_ingredient_params|
                 #the cocktail ingredient params is the whole obj(cocktail_ingredients)
                 #and I'm accessing the id in that in order to update said object
