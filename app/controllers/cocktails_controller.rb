@@ -29,7 +29,7 @@ class CocktailsController < ApplicationController
             params[:cocktail_ingredients].each do |cocktail_ingredient_params|
                 #the cocktail ingredient params is the whole obj(cocktail_ingredients)
                 #and I'm accessing the id in that in order to update said object
-                cocktail_ingredient = cocktail.cocktai_ingredient.find_by_id(cocktail_ingredient_params[:id])
+                cocktail_ingredient = cocktail.cocktail_ingredients.find_by_id(cocktail_ingredient_params[:id])
                 cocktail_ingredient.update(cocktail_ingredient_params)
             end
             cocktail.to_json(include: [cocktail_ingredients: { include: [:ingredient] }])
@@ -39,7 +39,7 @@ class CocktailsController < ApplicationController
     end
 
     delete "/cocktails/:id" do
-        cocktail = cocktail.find_by_id(params[:id])
+        cocktail = Cocktail.find_by_id(params[:id])
         if cocktail
             cocktail.destroy
             cocktail.to_json #find our cocktail that we destroyed on the frontend so we can can delete it there also
