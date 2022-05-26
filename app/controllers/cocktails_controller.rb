@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-
+    
     #getting all of the cocktails. 
     #returns the cocktail AND the ingredients through the join table
     #that way we see the cocktail, and the actual ingredient-not just the ingredient ID
