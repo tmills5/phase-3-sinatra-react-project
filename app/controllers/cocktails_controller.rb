@@ -8,6 +8,15 @@ class CocktailsController < ApplicationController
         @cocktails.to_json(include: [cocktail_ingredients: { include: [:ingredient] }])
     end
 
+    get "/cocktails/:id" do
+        cocktail = Cocktail.find_by_id(params[:id])
+        if cocktail
+            cocktail.to_json
+        else
+            { errors: ["Cocktail not found"], status: "Not Found"}.to_json
+        end
+    end
+
     post "/cocktails" do
         #binding.pry
         cocktail = Cocktail.new(params[:cocktail])
