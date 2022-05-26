@@ -10,7 +10,7 @@ class CocktailsController < ApplicationController
 
     post "/cocktails" do
         #binding.pry
-        cocktail = cocktail.new(params[:cocktail])
+        cocktail = Cocktail.new(params[:cocktail])
         if cocktail.save
             #adding the ingredients to the cocktail
             #creating the ingredient and passing in the measurement and the ingredient_id
@@ -23,7 +23,7 @@ class CocktailsController < ApplicationController
 
     #finding a cocktail by id to update
     patch "/cocktails/:id" do
-        cocktail = cocktail.find_by_id(params[:id])
+        cocktail = Cocktail.find_by_id(params[:id])
         if cocktail && cocktail.update(params[:cocktail])
             #if cocktail params updates, then move on to cocktai_ingredient
             params[:cocktail_ingredients].each do |cocktail_ingredient_params|
