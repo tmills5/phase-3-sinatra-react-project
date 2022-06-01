@@ -33,16 +33,20 @@ class CocktailsController < ApplicationController
     #finding a cocktail by id to update
     patch "/cocktails/:id" do
         cocktail = Cocktail.find_by_id(params[:id])
+#binding.pry
         if cocktail && cocktail.update(params[:cocktail])
-            #if cocktail params updates, then move on to cocktail_ingredient
+            
+            #if cocktail params updates, then move on to cocktail_ingredient          
+        else
             params[:cocktail_ingredients].each do |cocktail_ingredient_params|
                 #the cocktail ingredient params is the whole obj(cocktail_ingredients)
                 #and I'm accessing the id in that in order to update said object
+binding.pry
                 cocktail_ingredient = cocktail.cocktail_ingredients.find_by_id(cocktail_ingredient_params[:id])
                 cocktail_ingredient.update(cocktail_ingredient_params)
+binding.pry                
             end
             cocktail.to_json(include: [cocktail_ingredients: { include: [:ingredient] }])
-        else
             { errors: cocktail.errors.full_messages, status: "Unprocessable Entity" }.to_json
         end
     end

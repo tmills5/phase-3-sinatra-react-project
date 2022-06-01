@@ -1,20 +1,26 @@
-require 'faker'
+# require 'faker'
+# require 'cocktaildb'
+Cocktail.destroy_all
 
-puts "🌱 Seeding drinks..."
+puts "🌱 Seeding data..."
 
 # Seed your database here
+cocktails = []
 
-ice = Ingredient.create(name: "ice")
-vodka = Ingredient.create(name: "vodka")
-oj = Ingredient.create(name: "oj")
-bourbon = Ingredient.create(name: "bourbon")
+3.times do 
+    random = CocktailDB::random
+    cocktails<<random
+end
+    cocktails.each do |cocktail|
+     cocktail = Cocktail.create(
+        name: cocktail["strDrink"],
+        category: cocktail["strCategory"],
+        image: cocktail["strDrinkThumb"],
+        glass: cocktail["strGlass"]
+    )
+end
 
-test_1_screwdriver = Cocktail.create(name: "ScrewDriver", instructions: "Mix", image: "Test URL")
 
-CocktailIngredient.create(measurement: "glassful", cocktail: test_1_screwdriver, ingredient: ice)
-CocktailIngredient.create(measurement: "3oz", cocktail: test_1_screwdriver, ingredient: vodka)
-CocktailIngredient.create(measurement: "fill remaining", cocktail: test_1_screwdriver, ingredient: oj)
-
-
+# puts cocktails[0]
 
 puts "✅ Done seeding!"

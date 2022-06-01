@@ -12,24 +12,27 @@
 
 ActiveRecord::Schema.define(version: 2022_05_24_151252) do
 
-  create_table "cocktail_ingredients", force: :cascade do |t|
-    t.string "measurement"
-    t.integer "cocktail_id"
-    t.integer "ingredient_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "cocktails", force: :cascade do |t|
     t.string "name"
-    t.text "instructions"
+    t.text "category"
     t.string "image"
+    t.string "glass"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ingredients", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
+    t.string "score"
+    t.text "comment"
+    t.integer "cocktail_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
