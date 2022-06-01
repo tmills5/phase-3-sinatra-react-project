@@ -5,7 +5,7 @@ class CocktailsController < ApplicationController
     #that way we see the cocktail, and the actual ingredient-not just the ingredient ID
     get "/cocktails" do
         @cocktails = Cocktail.all
-        @cocktails.to_json(include: [cocktail_ingredients: { include: [:ingredient] }])
+        @cocktails.to_json
     end
 
     get "/cocktails/:id" do
@@ -21,10 +21,6 @@ class CocktailsController < ApplicationController
         #binding.pry
         cocktail = Cocktail.new(params[:cocktail])
         if cocktail.save
-            #adding the ingredients to the cocktail
-            #creating the ingredient and passing in the measurement and the ingredient_id
-            params[:cocktail_ingredients].each { |cocktail_ingredient| cocktail.cocktail_ingredients.create(cocktail_ingredient) }
-            cocktail.to_json(include: [cocktail_ingredients: { include: [:ingredient] }])
         else
             { errors: cocktail.errors.full_messages, status: "Unprocessable Entity" }.to_json
         end
@@ -33,20 +29,19 @@ class CocktailsController < ApplicationController
     #finding a cocktail by id to update
     patch "/cocktails/:id" do
         cocktail = Cocktail.find_by_id(params[:id])
-#binding.pry
-        if cocktail && cocktail.update(params[:cocktail])
-            
-            #if cocktail params updates, then move on to cocktail_ingredient          
+
+        if cocktail
+            cocktail.update(params[:cocktail])
+            cocktail.to_json         
         else
-            params[:cocktail_ingredients].each do |cocktail_ingredient_params|
-                #the cocktail ingredient params is the whole obj(cocktail_ingredients)
-                #and I'm accessing the id in that in order to update said object
-binding.pry
-                cocktail_ingredient = cocktail.cocktail_ingredients.find_by_id(cocktail_ingredient_params[:id])
-                cocktail_ingredient.update(cocktail_ingredient_params)
-binding.pry                
-            end
-            cocktail.to_json(include: [cocktail_ingredients: { include: [:ingredient] }])
+            # params[:cocktail_ingredients].each do |cocktail_ingredient_params|
+            #     #the cocktail ingredient params is the whole obj(cocktail_ingredients)
+            #     #and I'm accessing the id in that in order to update said object
+
+            #     cocktail_ingredient = cocktail.cocktail_ingredients.find_by_id(cocktail_ingredient_params[:id])
+            #     cocktail_ingredient.update(cocktail_ingredient_params)
+             
+            # end
             { errors: cocktail.errors.full_messages, status: "Unprocessable Entity" }.to_json
         end
     end
@@ -55,7 +50,8 @@ binding.pry
         cocktail = Cocktail.find_by_id(params[:id])
         if cocktail
             cocktail.destroy
-            cocktail.to_json #find our cocktail that we destroyed on the frontend so we can can delete it there also
+            cocktail.to_json 
+            #find our cocktail that we destroyed on the frontend so we can can delete it there also
         else
             { errors: ["Cocktail not found"], status: "Not Found"}.to_json
         end
