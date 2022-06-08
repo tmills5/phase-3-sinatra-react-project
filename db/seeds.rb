@@ -1,7 +1,6 @@
 # require 'faker'
 # require 'cocktaildb'
 Review.destroy_all
-User.destroy_all
 Cocktail.destroy_all
 
 puts "🌱 Seeding data..."
@@ -17,19 +16,10 @@ cocktails = []
 end
     cocktails.each do |cocktail|
      cocktail = Cocktail.create({
-        name: cocktail["strDrink"],
+        cocktail_name: cocktail["strDrink"],
         category: cocktail["strCategory"],
         image: cocktail["strDrinkThumb"],
         glass: cocktail["strGlass"]
-    })
-end
-
-#seeding the users
-
-10.times do |user|
-    User.create({
-        name: Faker::Name.name,
-        email: Faker::Internet.email
     })
 end
 
@@ -40,11 +30,9 @@ end
     Review.create(
         score: rand(1..10),
         comment: Faker::Hipster.sentence(word_count: 10),
-        cocktail_id: rand(1..5),
-        user_id: rand(1..10)
+        cocktail_id: rand(1..5)
     )
 end
-
 
 
 puts "✅ Done seeding!"

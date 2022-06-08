@@ -13,7 +13,7 @@ use Rack::JSONBodyParser
 
 # Our application
 run ApplicationController
-# use CocktailsController
-# use UsersController
- #we want this one to be run first
+use CocktailsController
+use ReviewsController
+
 
