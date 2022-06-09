@@ -28,13 +28,13 @@ class CocktailsController < ApplicationController
   end
 
   patch "/cocktails/:id" do 
-
+    cocktail = Cocktail.find_by_id(params[:id])
   end
 
-    delete "" do
-        cocktail = Cocktail.find_by_id(params[:id])
-        cocktail.destroy
-    end
+  delete "/cocktails/:id" do
+    cocktail = Cocktail.find_by_id(params[:id])
+    cocktail.destroy
+  end
 
 
 end
