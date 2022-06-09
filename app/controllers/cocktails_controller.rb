@@ -27,7 +27,11 @@ class CocktailsController < ApplicationController
     cocktail.to_json
   end
 
-    delete "/cocktails/:id" do
+  patch "/cocktails/:id" do 
+
+  end
+
+    delete "" do
         cocktail = Cocktail.find_by_id(params[:id])
         cocktail.destroy
     end

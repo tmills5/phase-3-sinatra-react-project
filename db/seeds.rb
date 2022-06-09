@@ -10,7 +10,7 @@ puts "🌱 Seeding data..."
 
 cocktails = []
 
-5.times do 
+10.times do 
     random = CocktailDB::random
     cocktails<<random
 end
@@ -26,11 +26,11 @@ end
 
 #seeding the reviews
 
-15.times do
+50.times do
     Review.create(
         score: rand(1..10),
-        comment: Faker::Hipster.sentence(word_count: 10),
-        cocktail_id: rand(1..5)
+        comment: Faker::Hipster.sentence(word_count: 2),
+        cocktail_id: rand(1..50)
     )
 end
 
