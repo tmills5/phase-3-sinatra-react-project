@@ -19,7 +19,7 @@ class CocktailsController < ApplicationController
   post "/cocktails" do #-----WORKS!
     #binding.pry
     cocktail = Cocktail.create(
-      cocktail_name: params[:name],
+      cocktail_name: params[:cocktail_name],
       category: params[:category],
       image: params[:image],
       glass: params[:glass]
@@ -29,6 +29,13 @@ class CocktailsController < ApplicationController
 
   patch "/cocktails/:id" do 
     cocktail = Cocktail.find_by_id(params[:id])
+    cocktail.update(
+      cocktail_name: params[:cocktail_name],
+      category: params[:category],
+      image: params[:image],
+      glass: params[:glass]
+      )
+    cocktail.save
   end
 
   delete "/cocktails/:id" do
