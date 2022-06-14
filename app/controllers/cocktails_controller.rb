@@ -1,6 +1,7 @@
 class CocktailsController < ApplicationController
     set :default_content_type, 'application/json'
-   
+    set :method_override, true
+
     get "/cocktails" do
         @cocktails = Cocktail.all
         @cocktails.to_json
