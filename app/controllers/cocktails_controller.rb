@@ -36,7 +36,7 @@ class CocktailsController < ApplicationController
       image: params[:image],
       glass: params[:glass]
       )
-    cocktail.save
+    cocktail.to_json
   end
 
   delete "/cocktails/:id" do
