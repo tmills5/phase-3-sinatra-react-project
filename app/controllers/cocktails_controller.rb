@@ -19,22 +19,22 @@ class CocktailsController < ApplicationController
 
   post "/cocktails" do #-----WORKS!
     #binding.pry
+    #Initailize and persists new cocktail
     cocktail = Cocktail.create(
+      # could also just put params here
       cocktail_name: params[:cocktail_name],
-      category: params[:category],
       image: params[:image],
-      glass: params[:glass]
     )
+    # confirming the new cocktail and return in JSON
     cocktail.to_json
   end
 
   patch "/cocktails/:id" do 
-    cocktail = Cocktail.find_by_id(params[:id])
+    # binding.pry
+    cocktail = Cocktail.find(params[:id])
     cocktail.update(
       cocktail_name: params[:cocktail_name],
-      category: params[:category],
       image: params[:image],
-      glass: params[:glass]
       )
     cocktail.to_json
   end

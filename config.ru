@@ -15,5 +15,6 @@ use Rack::JSONBodyParser
 run ApplicationController
 use CocktailsController
 use ReviewsController
+use UsersController
 
 

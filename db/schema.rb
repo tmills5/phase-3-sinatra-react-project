@@ -10,21 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_24_020242) do
+ActiveRecord::Schema.define(version: 2022_06_23_152358) do
 
   create_table "cocktails", force: :cascade do |t|
     t.string "cocktail_name"
-    t.text "category"
     t.string "image"
-    t.string "glass"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "score"
     t.text "comment"
     t.integer "cocktail_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "user_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
