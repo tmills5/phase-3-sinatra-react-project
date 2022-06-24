@@ -12,11 +12,13 @@ class ReviewsController < ApplicationController
         cocktail.reviews.to_json
     end
 
-    post "/reviews" do
+    #create new review for each cocktail
+    post "/cocktails/:cocktail_id" do
         review = Review.create(
             comment: params[:comment],
-            user_name: params[:user_name]
+            cocktail_id: params[:cocktail_id]
         )
+        review.to_json
     end
 
 
