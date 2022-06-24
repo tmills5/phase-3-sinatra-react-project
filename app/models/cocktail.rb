@@ -1,7 +1,6 @@
 class Cocktail < ActiveRecord::Base
     has_many :reviews
-    has_many :users, through: :reviews
-    
+
     #Must have a name. Presence determines if attribute is there
     #and wont save if not. Uniqueness validates if the name has 
     #already been taken. Can see errors with cocktail.errors.full_messages

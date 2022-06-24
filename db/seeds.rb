@@ -3,7 +3,6 @@
 # Review.destroy_all
 Cocktail.destroy_all
 Review.destroy_all
-User.destroy_all
 
 
 puts "🌱 Seeding data..."
@@ -31,13 +30,6 @@ end
     Review.create(
         comment: Faker::Hipster.word,
         cocktail_id: rand(1..10),
-        user_id: rand(1..10)
-    )
-end
-
-10.times do
-    User.create(
-        user_name: Faker::Name.name,
     )
 end
 

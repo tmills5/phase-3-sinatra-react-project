@@ -12,6 +12,13 @@ class ReviewsController < ApplicationController
         cocktail.reviews.to_json
     end
 
+    post "/reviews" do
+        review = Review.create(
+            comment: params[:comment],
+            user_name: params[:user_name]
+        )
+    end
+
 
 end
 
