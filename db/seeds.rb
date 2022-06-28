@@ -1,8 +1,10 @@
 # require 'faker'
 # require 'cocktaildb'
-# Review.destroy_all
-Cocktail.destroy_all
+
+
 Review.destroy_all
+Cocktail.destroy_all
+
 
 
 puts "🌱 Seeding data..."
@@ -12,7 +14,7 @@ puts "🌱 Seeding data..."
 
 cocktails = []
 
-10.times do 
+12.times do 
     random = CocktailDB::random
     cocktails<<random
 end
@@ -26,7 +28,7 @@ end
 
 #seeding the reviews
 
-10.times do
+24.times do
     Review.create(
         comment: Faker::Hipster.word,
         cocktail_id: rand(1..10),
