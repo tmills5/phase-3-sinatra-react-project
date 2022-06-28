@@ -119,25 +119,3 @@ fetch("http://localhost:9292/test")
 [network tab]: https://developer.chrome.com/docs/devtools/network/
 
 ----------------------------------------------------------------------------------------
-
-### Cocktail
---
-name
-instructions
-image
-
-has many cocktail ingredients
-has many ingredients through cocktail ingredients
-
-### CocktailIngredient
---
-amount:
-belong to a cocktail
-belong to an ingredient
-
-### Ingredient
---
-name
-
-has many cocktail ingredients
-has many cocktails throught cocktail ingredients
